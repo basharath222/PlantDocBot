@@ -1,0 +1,13 @@
+# Ignore the virtual environment
+venv/
+.venv/
+
+# Ignore API Keys and secrets
+.env
+
+# Ignore the Vector Database (it's too large and can be regenerated)
+chroma_db/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
