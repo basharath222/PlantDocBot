@@ -2,9 +2,11 @@ streamlit
 google-genai
 pillow
 python-dotenv
-langchain-chroma
+chromadb>=0.6.0
+langchain-chroma>=0.2.0
 langchain-core
 langchain-google-genai
 protobuf>=5.26.1
 opentelemetry-api>=1.24.0
 opentelemetry-sdk>=1.24.0
+opentelemetry-exporter-otlp-proto-grpc>=1.24.0
