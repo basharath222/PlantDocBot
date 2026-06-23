@@ -5,11 +5,21 @@ from PIL import Image
 import streamlit as st
 from rag_pipeline import get_expert_advice
 
+# Load local environment variables if available
 load_dotenv()
 
-api_key = os.getenv("GOOGLE_API_KEY")
+# Check Streamlit secrets first (for cloud deployment), then fallback to local .env
+if "GOOGLE_API_KEY" in st.secrets:
+    api_key = st.secrets["GOOGLE_API_KEY"]
+else:
+    api_key = os.getenv("GOOGLE_API_KEY")
+
+if not api_key:
+    st.error("API Key not found. Please set GOOGLE_API_KEY in your environment or Streamlit Secrets.")
+    st.stop()
+
 client = genai.Client(api_key=api_key)
-st.set_page_config(page_title="PlantdocBot",page_icon="🌿")
+st.set_page_config(page_title="PlantdocBot", page_icon="🌿")
 
 st.markdown(
     """
